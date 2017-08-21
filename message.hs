@@ -4,6 +4,7 @@ import System.Environment
 import Data.Aeson
 import qualified Data.ByteString.Lazy.Char8 as BS
 
+-- message schema
 -- {
 --     type: 'post',
 --     text: String,
@@ -13,6 +14,8 @@ import qualified Data.ByteString.Lazy.Char8 as BS
 --     recps: optional FeedLinks,
 --     mentions: optional Links
 -- }
+
+-- a type for posts
 data Post = Post {
     text     :: String
   , channel  :: Maybe String
@@ -24,6 +27,7 @@ data Post = Post {
 
 instance ToJSON Post
 
+-- a value of type post
 post = Post {
     text     = "this is some text"
   , channel  = Nothing
@@ -33,11 +37,12 @@ post = Post {
   , mentions = Nothing
 }
 
+-- type aliases
 type MsgLink = String
 type FeedLink = String
 type Link = String
 
--- print the json to stdout
+-- print the json and cli args to stdout
 -- @TODO parse cli args
 main = do
     BS.putStrLn $ encode post
