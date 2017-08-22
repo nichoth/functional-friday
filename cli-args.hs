@@ -8,8 +8,11 @@ import System.Environment
 
 -- print the command line arguments
 main = do
-    args <- getArgs
-    mapM_ putStrLn args
+    mapM_ putStrLn =<< getArgs
+
+    -- the following two lines do the same thing
+    -- args <- getArgs
+    -- mapM_ putStrLn args
 
 
 
